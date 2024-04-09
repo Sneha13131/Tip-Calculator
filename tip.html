@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="App.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<html>
+
+<head>
+  <title>Tip Calculator</title>
+</head>
+<style>
+  h1 {
+    color: rgb(118, 166, 255);
+    text-align: center;
+  }
+
+  p {
+    color: rgb(118, 166, 255);
+    text-align: center;
+  }
+
+  label {
+    color: rgb(118, 166, 255);
+  }
+
+  h5 {
+    color: rgb(118, 166, 255);
+  }
+
+  span {
+    color: rgb(118, 166, 255);
+  }
+</style>
+
+<body>
+  <h1>Tip Calculator</h1>
+  <p>Find the right amount to tip.</p>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card card-body text-center mt-5">
+            <h1 class="heading display-5 pb-3">Tip Calculator</h1>
+            <form id="tip-form">
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">$</span>
+                  <input type="number" class="form-control" id="billTotal" placeholder="Total Bill">
+                </div>
+              </div>
+              <div class="form-group tipPersent">
+                <div class="input-group">
+                  <label for="">Tip:</label>
+
+
+                  <input type="range" class="form-control" id="tipInput" value="0">
+                  <span class="input-group-addon" id="tipOutput"></span>
+                </div>
+              </div>
+
+
+
+            </form>
+            <hr>
+
+
+            <div id="results" class="pt-4">
+              <h5>Results</h5>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">Tip amount</span>
+                  <input type="number" class="form-control" id="tipAmount" disabled>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">Total Bill with Tip</span>
+                  <input type="number" class="form-control" id="totalBillWithTip" disabled>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+  <script>
+    document.querySelector('#tip-form').onchange = function () {
+
+      var bill = Number(document.getElementById('billTotal').value);
+      var tip = document.getElementById('tipInput').value;
+      document.getElementById('tipOutput').innerHTML = `${tip}%`;
+      var tipValue = bill * (tip / 100)
+      var finalBill = bill + tipValue
+      console.log(finalBill)
+      var tipAmount = document.querySelector('#tipAmount')
+      var totalBillWithTip = document.querySelector('#totalBillWithTip')
+
+      tipAmount.value = tipValue.toFixed(2);
+      totalBillWithTip.value = finalBill.toFixed(2);
+
+      
+
+      document.getElementById('results').style.display = 'block'
+    } </script>
+</body>
